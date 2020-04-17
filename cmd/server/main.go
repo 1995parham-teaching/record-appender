@@ -2,18 +2,21 @@ package server
 
 import (
 	"database/sql"
-	"snapfood/handler"
+
+	"github.com/elahe-dastan/record-appender/handler"
+	"github.com/elahe-dastan/record-appender/store"
 
 	"github.com/spf13/cobra"
 )
 
-func Register(root *cobra.Command, db *sql.DB)  {
+func Register(root *cobra.Command, db *sql.DB) {
 	root.AddCommand(
 		&cobra.Command{
 			Use:   "server",
 			Short: "Run server to serve the requests",
 			Run: func(cmd *cobra.Command, args []string) {
-				api := handler.API{DB: db}
+				str := store.SQLData{DB: db}
+				api := handler.API{Store: str}
 				api.Run()
 			},
 		},

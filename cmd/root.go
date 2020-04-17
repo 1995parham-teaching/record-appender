@@ -3,24 +3,30 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"snapfood/cmd/server"
-	"snapfood/cmd/setup"
-	"snapfood/db"
+
+	"github.com/elahe-dastan/record-appender/cmd/migrate"
+	"github.com/elahe-dastan/record-appender/cmd/server"
+	"github.com/elahe-dastan/record-appender/cmd/setup"
+	"github.com/elahe-dastan/record-appender/config"
+	"github.com/elahe-dastan/record-appender/db"
 
 	"github.com/spf13/cobra"
 )
 
-// rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
-	Use:   "snapfood",
-	Short: "A brief description of your application",
-}
-
 func Execute() {
-	d := db.New()
+	cfg := config.New()
 
-	setup.Register(rootCmd, d)
-	server.Register(rootCmd, d)
+	db := db.New(cfg.Database)
+
+	// rootCmd represents the base command when called without any subcommands
+	var rootCmd = &cobra.Command{
+		Use:   "record-appender",
+		Short: "A brief description of your application",
+	}
+
+	setup.Register(rootCmd, db)
+	server.Register(rootCmd, db)
+	migrate.Register(rootCmd, db)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

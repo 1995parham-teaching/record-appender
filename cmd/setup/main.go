@@ -7,27 +7,34 @@ import (
 	"io"
 	"log"
 	"os"
-	"snapfood/model"
-	"snapfood/store"
+
+	"github.com/elahe-dastan/record-appender/model"
+	"github.com/elahe-dastan/record-appender/store"
 
 	"github.com/spf13/cobra"
 )
 
-func Register(root *cobra.Command, d *sql.DB) {
+const BulkRead = 2
+
+func Register(root *cobra.Command, db *sql.DB) {
 	root.AddCommand(
 		&cobra.Command{
 			Use:   "setup",
 			Short: "Run server to serve the requests",
 			Run: func(cmd *cobra.Command, args []string) {
 				f, err := os.Open("./data.txt")
-				check(err)
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				str := store.SQLData{DB: db}
 
 				r := bufio.NewReader(f)
 
 				for {
 					models := make([]model.Data, 0)
 					var err error
-					for i := 0; i < 2; i++ {
+					for i := 0; i < BulkRead; i++ {
 						var line string
 						line, err = r.ReadString('\n')
 						if err != nil {
@@ -36,11 +43,13 @@ func Register(root *cobra.Command, d *sql.DB) {
 							}
 
 							log.Println(err)
+							return
 						}
+
 						models = append(models, model.New(line))
 					}
 
-					if err := store.Insert(d, models); err != nil {
+					if err := str.Insert(models); err != nil {
 						log.Println(err)
 					}
 
@@ -51,10 +60,4 @@ func Register(root *cobra.Command, d *sql.DB) {
 			},
 		},
 	)
-}
-
-func check(err error)  {
-	if err != nil {
-		log.Println(err)
-	}
 }
