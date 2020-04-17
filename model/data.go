@@ -4,8 +4,8 @@ import "strings"
 
 type Data struct {
 	FirstName string
-	LastName string
-	Number string
+	LastName  string
+	Number    string
 }
 
 func New(line string) Data {
