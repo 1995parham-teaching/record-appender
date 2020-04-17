@@ -1,6 +1,6 @@
 package main
 
-import "snapfood/cmd"
+import "github.com/elahe-dastan/record-appender/cmd"
 
 func main() {
 	cmd.Execute()
