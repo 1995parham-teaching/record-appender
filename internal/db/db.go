@@ -4,11 +4,10 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/1995parham-teaching/record-appender/config"
-	_ "github.com/lib/pq" //adding dialect for postgres
+	_ "github.com/lib/pq" // adding dialect for postgres
 )
 
-func New(database config.Database) *sql.DB {
+func New(database Database) *sql.DB {
 	db, err := sql.Open("postgres", database.Cstring())
 	if err != nil {
 		log.Printf("can not open connection to database due to the following err\n: %s", err)
