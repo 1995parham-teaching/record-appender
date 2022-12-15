@@ -1,5 +1,7 @@
 package db
 
+import "fmt"
+
 type Database struct {
 	Host     string `koan:"host"`
 	Port     string `koanf:"port"`
