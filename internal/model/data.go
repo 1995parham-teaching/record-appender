@@ -8,6 +8,8 @@ type Data struct {
 	Number    string
 }
 
+// New parse a line to create an instance
+// of data.
 func New(line string) Data {
 	line = strings.TrimSuffix(line, "\n")
 	data := strings.Split(line, ",")

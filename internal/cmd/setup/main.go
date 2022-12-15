@@ -8,8 +8,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/elahe-dastan/record-appender/model"
-	"github.com/elahe-dastan/record-appender/store"
+	"github.com/1995parham-teaching/record-appender/model"
+	"github.com/1995parham-teaching/record-appender/store"
 
 	"github.com/spf13/cobra"
 )

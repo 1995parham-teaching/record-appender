@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/elahe-dastan/record-appender/config"
+	"github.com/1995parham-teaching/record-appender/config"
 	_ "github.com/lib/pq" //adding dialect for postgres
 )
 

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/elahe-dastan/record-appender/model"
+	"github.com/1995parham-teaching/record-appender/internal/model"
 )
 
 type Data interface {
@@ -18,7 +18,7 @@ type SQLData struct {
 }
 
 func (s SQLData) Retrieve(limit int, offset int) ([]model.Data, error) {
-	rows, err := s.DB.Query("SELECT * from data OFFSET $1 LIMIT 100;", offset, limit)
+	rows, err := s.DB.Query("SELECT * from data OFFSET $1 LIMIT $2;", offset, limit)
 	if err != nil {
 		return nil, err
 	}
@@ -49,6 +49,7 @@ func (s SQLData) Insert(data []model.Data) error {
 	query := "INSERT INTO data (first, last, number) VALUES "
 	parameters := make([]interface{}, 0)
 
+	// create a bulk query for inserting all data.
 	for i, d := range data {
 		// nolint: gomnd
 		query += fmt.Sprintf("($%d, $%d, $%d),", 3*i+1, 3*i+2, 3*i+3)
