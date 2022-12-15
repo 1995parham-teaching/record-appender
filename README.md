@@ -1,4 +1,11 @@
-# Record Appender
+<h1 align="center">Record Appender</h1>
+
+<h6 align="center">Append in Bulk, then Serve</h6>
+
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/1995parham-teaching/record-appender/ci.yaml?label=ci&logo=github&style=for-the-badge&branch=main" alt="GitHub Workflow Status">
+  <img alt="GitHub" src="https://img.shields.io/github/license/1995parham-teaching/record-appender?logo=gnu&style=for-the-badge">
+</p>
 
 ## Introduction
 
