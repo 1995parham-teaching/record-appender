@@ -3,11 +3,9 @@ module github.com/1995parham-teaching/record-appender
 go 1.19
 
 require (
-	github.com/1995parham-teaching/record-appender v0.0.0-20221215195011-bc0e38db0981
 	github.com/knadh/koanf v1.4.4
 	github.com/labstack/echo/v4 v4.9.1
 	github.com/lib/pq v1.10.7
-	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.6.1
 )
 
@@ -21,9 +19,7 @@ require (
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
-	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.4.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.4.0 // indirect
