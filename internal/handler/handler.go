@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/1995parham-teaching/record-appender/store"
+	"github.com/1995parham-teaching/record-appender/internal/store"
 	"github.com/labstack/echo/v4"
 )
 
