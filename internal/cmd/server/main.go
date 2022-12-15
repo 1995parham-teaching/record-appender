@@ -3,8 +3,8 @@ package server
 import (
 	"database/sql"
 
-	"github.com/1995parham-teaching/record-appender/handler"
-	"github.com/1995parham-teaching/record-appender/store"
+	"github.com/1995parham-teaching/record-appender/internal/handler"
+	"github.com/1995parham-teaching/record-appender/internal/store"
 
 	"github.com/spf13/cobra"
 )

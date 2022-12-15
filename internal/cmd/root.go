@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/1995parham-teaching/record-appender/config"
-	"github.com/1995parham-teaching/record-appender/db"
 	"github.com/1995parham-teaching/record-appender/internal/cmd/migrate"
 	"github.com/1995parham-teaching/record-appender/internal/cmd/server"
 	"github.com/1995parham-teaching/record-appender/internal/cmd/setup"
+	"github.com/1995parham-teaching/record-appender/internal/config"
+	"github.com/1995parham-teaching/record-appender/internal/db"
 
 	"github.com/spf13/cobra"
 )
