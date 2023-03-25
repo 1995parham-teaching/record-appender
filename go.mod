@@ -1,6 +1,6 @@
 module github.com/1995parham-teaching/record-appender
 
-go 1.19
+go 1.20
 
 require (
 	github.com/knadh/koanf v1.4.4
