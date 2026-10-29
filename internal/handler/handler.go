@@ -1,11 +1,12 @@
 package handler
 
 import (
+	"log"
 	"net/http"
 	"strconv"
 
 	"github.com/1995parham-teaching/record-appender/internal/store"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 )
 
 const BulkSize = 100
@@ -18,10 +19,12 @@ func (a API) Run() {
 	e := echo.New()
 	e.GET("/api/:n", a.retrieve)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	if err := e.Start(":8080"); err != nil {
+		log.Fatal(err)
+	}
 }
 
-func (a API) retrieve(c echo.Context) error {
+func (a API) retrieve(c *echo.Context) error {
 	number := c.Param("n")
 
 	num, err := strconv.Atoi(number)
